@@ -21,7 +21,6 @@ import {
 import { IProviderAdapter } from "../../plasma/src/adapters/IProviderAdapter";
 import { MATIC_CHAIN_ID } from "./constants";
 import { utils } from "ethers";
-
 import Web3EthAbi from "web3-eth-abi";
 
 export function getValidatorSignatures(

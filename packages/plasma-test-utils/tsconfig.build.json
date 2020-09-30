@@ -4,7 +4,8 @@
     "target": "es5",
     "sourceMap": true,
     "noEmitOnError": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "skipLibCheck": true
   },
 
   "exclude": ["node_modules", "dist"]
