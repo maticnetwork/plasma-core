@@ -1,0 +1,23 @@
+{
+  "name": "plasma-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maticnetwork/plasma-core.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maticnetwork/plasma-core/issues"
+  },
+  "homepage": "https://github.com/maticnetwork/plasma-core#readme",
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}

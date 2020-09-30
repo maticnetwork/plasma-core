@@ -1,0 +1,19 @@
+{
+  "name": "@maticnetwork/plasma-test-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@maticnetwork/plasma": "^1.0.0",
+    "bn.js": "^5.1.3",
+    "ethereumjs-util": "^7.0.5",
+    "ethers": "^5.0.14",
+    "web3-eth-abi": "^1.3.0"
+  }
+}
