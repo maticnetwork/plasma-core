@@ -6,5 +6,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "types": []
+  },
+
+  "baseUrl": ".",
+  "paths": {
+    "@maticnetwork/plasma": ["../plasma/src/"]
   }
 }
