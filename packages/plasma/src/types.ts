@@ -1,4 +1,4 @@
-import BN from 'bn.js'
+import BN from "bn.js";
 
 export interface LogEntry {
   logIndex: number | null;
@@ -15,7 +15,7 @@ export interface TransactionReceipt {
   blockHash: string;
   blockNumber: number;
   transactionHash: string;
-  transactionIndex: number|BN|null;
+  transactionIndex: number | BN | null;
   from: string;
   to: string;
   status: null | string | number | boolean;
@@ -40,7 +40,7 @@ export interface SerializableTransaction {
   v?: string;
   r?: string;
   s?: string;
-  transactionIndex: number|BN|null;
+  transactionIndex: number | BN | null;
 }
 
 export interface Block {
@@ -59,7 +59,7 @@ export interface Block {
   transactions: SerializableTransaction[];
 }
 
-export type MerkleNode = Buffer[]
+export type MerkleNode = Buffer[];
 
 export interface ExitProof {
   blockHash: Buffer;
@@ -76,9 +76,9 @@ export interface RootChainBlockHeader {
 }
 
 export interface RootChainReadOnly {
-  currentHeaderBlock(): Promise<number|string>;
-  getLastChildBlock(): Promise<number|string>
-  headerBlocks(blockNumber: string|number): Promise<RootChainBlockHeader>;
+  currentHeaderBlock(): Promise<number | string>;
+  getLastChildBlock(): Promise<number | string>;
+  headerBlocks(blockNumber: string | number): Promise<RootChainBlockHeader>;
 }
 
 export interface ExitReference {

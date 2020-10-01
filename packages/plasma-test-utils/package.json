@@ -2,11 +2,12 @@
   "name": "@maticnetwork/plasma-test-utils",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index",
+  "types": "dist/index",
   "scripts": {
     "build": "npm run clean && npm run compile",
     "clean": "rimraf -rf ./dist",
-    "compile": "tsc -p tsconfig.build.json",
+    "compile": "tsc -p tsconfig.json",
     "prepublishOnly": "npm run build"
   },
   "keywords": [],

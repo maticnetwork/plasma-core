@@ -5,6 +5,7 @@ import {
   buildBlockHeaderMerkle,
   getExitData,
   buildExitReference,
+  IProviderAdapter,
 } from "@maticnetwork/plasma";
 import {
   RootChainReadWrite,
@@ -18,10 +19,9 @@ import {
   toRpcSig,
   bufferToHex,
 } from "ethereumjs-util";
-import { IProviderAdapter } from "../../plasma/src/adapters/IProviderAdapter";
 import { MATIC_CHAIN_ID } from "./constants";
 import { utils } from "ethers";
-import Web3EthAbi from "web3-eth-abi";
+let Web3EthAbi = require("web3-eth-abi");
 
 export function getValidatorSignatures(
   wallets: ValidatorWallet[],
@@ -120,7 +120,7 @@ export class CheckpointHelper {
       start,
       end,
       root,
-      keccak256("RandomState")
+      keccak256(Buffer.from("RandomState"))
     );
 
     const { headerBlockId } = await rootChain.submitHeaderBlock(data, sigs);

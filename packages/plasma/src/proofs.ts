@@ -1,5 +1,5 @@
-import Trie from "merkle-patricia-tree";
-import EthereumTransaction from "ethereumjs-tx";
+let Trie = require("merkle-patricia-tree");
+let EthereumTransaction = require("ethereumjs-tx");
 import rlp from "rlp";
 
 import BN from "bn.js";

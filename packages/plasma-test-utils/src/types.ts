@@ -1,4 +1,4 @@
-import { RootChainReadOnly } from '@maticnetwork/plasma'
+import { RootChainReadOnly } from "@maticnetwork/plasma";
 
 export interface HeaderBlockPayload {
   data: string;
@@ -15,5 +15,5 @@ export interface NewHeaderBlock {
 }
 
 export interface RootChainReadWrite extends RootChainReadOnly {
-  submitHeaderBlock(data: string, sigs: string): Promise<NewHeaderBlock>
+  submitHeaderBlock(data: string, sigs: string): Promise<NewHeaderBlock>;
 }
