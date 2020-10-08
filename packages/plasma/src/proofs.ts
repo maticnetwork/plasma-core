@@ -1,6 +1,6 @@
 let Trie = require("merkle-patricia-tree");
 let EthereumTransaction = require("ethereumjs-tx");
-import rlp from "rlp";
+let rlp = require("rlp");
 
 import BN from "bn.js";
 import { keccak256, toBuffer, bufferToHex } from "ethereumjs-util";

@@ -1,4 +1,4 @@
-import rlp from "rlp";
+let rlp = require("rlp");
 
 import BN from "bn.js";
 import {
