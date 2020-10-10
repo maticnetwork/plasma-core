@@ -1,16 +1,18 @@
 {
   "name": "plasma-core",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "dist/index",
-  "types": "dist/index",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "lerna": "lerna",
     "clean": "lerna run clean",
     "build": "lerna run build",
     "pub": "lerna publish",
     "test": "lerna run test",
-    "tsc": "tsc"
+    "tsc": "lerna run tsc"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/maticnetwork/plasma-core/issues"
   },

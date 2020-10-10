@@ -16,5 +16,4 @@ export interface NewHeaderBlock {
 
 export interface RootChainReadWrite extends RootChainReadOnly {
   submitHeaderBlock(data: string, sigs: string): Promise<NewHeaderBlock>;
-  headerBlocks?: any;
 }
