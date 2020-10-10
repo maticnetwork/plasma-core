@@ -13,7 +13,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@maticnetwork/plasma": "^0.0.1",
     "bn.js": "^5.1.3",
