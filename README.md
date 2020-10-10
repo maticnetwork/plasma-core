@@ -1,6 +1,6 @@
 # Plasma Library
 
-### Installation
+## Usage
 
 ```bash
 # using npm
@@ -10,7 +10,7 @@ npm install --save @maticnetwork/plasma
 yarn add @maticnetwork/plasma
 ```
 
-### Setup
+## Setup
 
 This monorepo uses Lerna to manage multiple packages.
 
