@@ -2,6 +2,13 @@
 
 ### Installation
 
+```bash
+# using npm
+npm install --save @maticnetwork/plasma
+
+# using yarn
+yarn add @maticnetwork/plasma
+```
 
 ### Setup
 
