@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "lerna": "lerna",
     "clean": "lerna run clean",
