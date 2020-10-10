@@ -10,17 +10,14 @@ This monorepo uses Lerna to manage multiple packages.
 ### Installation
 
 ```bash
-npm install
-
-# bootstrap packages
-lerna boostrap
+yarn
 ```
 
 **Build**
 
 ```bash
 # this will build all packages
-lerna build
+yarn build
 ```
 
 ### Publish

@@ -2,8 +2,8 @@
   "name": "plasma-core",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/index",
-  "types": "dist/index",
+  "private": true,
+  "workspaces": ["packages/*"],
   "scripts": {
     "lerna": "lerna",
     "clean": "lerna run clean",

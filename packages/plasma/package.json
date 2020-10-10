@@ -2,8 +2,8 @@
   "name": "@maticnetwork/plasma",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/index",
-  "types": "dist/index",
+  "main": "dist/index.js",
+  "types": "src/index.ts",
   "scripts": {
     "build": "npm run clean && npm run compile",
     "clean": "rimraf -rf ./dist",
