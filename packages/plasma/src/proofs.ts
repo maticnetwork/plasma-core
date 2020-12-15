@@ -3,7 +3,7 @@ let EthereumTransaction = require("ethereumjs-tx");
 import rlp from "rlp";
 
 import BN from "bn.js";
-import { keccak256, toBuffer, bufferToHex } from "ethereumjs-util";
+import { keccak256, toBuffer, bufferToHex, setLengthLeft } from "ethereumjs-util";
 import { MerkleTree } from "./merkle";
 import {
   Block,
@@ -102,9 +102,15 @@ export async function getTxProof(
   tx: SerializableTransaction,
   block: Block
 ): Promise<ExitProof> {
+  const stateSyncTxHash = bufferToHex(getStateSyncTxHash(block))
+
   const txTrie = new Trie();
   for (let i = 0; i < block.transactions.length; i++) {
     const siblingTx = block.transactions[i];
+    if (siblingTx.hash === stateSyncTxHash) {
+      // ignore if tx hash is bor state-sync tx
+      continue
+    }
     await new Promise((resolve, reject) => {
       txTrie.put(getTriePath(siblingTx), getTxBytes(siblingTx), (err: any) => {
         if (err) {
@@ -132,9 +138,14 @@ export async function getReceiptProof(
 ): Promise<ExitProof> {
   const receiptsTrie = new Trie();
   const receiptPromises: Promise<TransactionReceipt>[] = [];
+  const stateSyncTxHash = bufferToHex(getStateSyncTxHash(block))
 
   if (!receipts) {
     block.transactions.forEach((tx) => {
+      if (tx.hash === stateSyncTxHash) {
+        // ignore if tx hash is bor state-sync tx
+        return
+      }
       receiptPromises.push(provider.getTransactionReceipt(tx.hash));
     });
     receipts = await Promise.all(receiptPromises);
@@ -142,6 +153,10 @@ export async function getReceiptProof(
 
   for (let i = 0; i < receipts.length; i++) {
     const siblingReceipt = receipts[i];
+    if (siblingReceipt.transactionHash === stateSyncTxHash) {
+      // ignore if tx hash is bor state-sync tx
+      continue
+    }
     await new Promise((resolve, reject) => {
       receiptsTrie.put(
         getTriePath(siblingReceipt),
@@ -175,4 +190,21 @@ export function getReceiptBytes(receipt: TransactionReceipt): Buffer {
       ];
     }),
   ]);
+}
+
+// getStateSyncTxHash returns tx hash for block's tx hash for state-sync receipt
+// Bor blockchain includes extra receipt/tx for state-sync logs,
+// but it is not included in transactionRoot or receiptRoot. 
+// So, while calculating proof, we have to exclude them.
+//
+// Tx hash for state-sync is derived from block's hash and number
+// state-sync tx hash = keccak256("matic-bor-receipt-" + block.number + block.hash)
+export function getStateSyncTxHash(block: Block): Buffer {
+  return keccak256(
+    Buffer.concat([
+      toBuffer("matic-bor-receipt-"), // prefix for bor receipt
+      setLengthLeft(toBuffer(block.number), 8), // 8 bytes of block number (BigEndian)
+      toBuffer(block.hash), // block hash
+    ])
+  )
 }
