@@ -192,12 +192,12 @@ export function getReceiptBytes(receipt: TransactionReceipt): Buffer {
   ]);
 }
 
-// getStateSyncTxHash returns tx hash for block's tx hash for state-sync receipt
+// getStateSyncTxHash returns block's tx hash for state-sync receipt
 // Bor blockchain includes extra receipt/tx for state-sync logs,
 // but it is not included in transactionRoot or receiptRoot. 
 // So, while calculating proof, we have to exclude them.
 //
-// Tx hash for state-sync is derived from block's hash and number
+// This is derived from block's hash and number
 // state-sync tx hash = keccak256("matic-bor-receipt-" + block.number + block.hash)
 export function getStateSyncTxHash(block: Block): Buffer {
   return keccak256(
