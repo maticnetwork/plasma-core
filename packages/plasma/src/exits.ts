@@ -181,7 +181,12 @@ function _buildReferenceTxPayload(input: ExitPayload) {
     bufferToHex(reference.receiptsRoot),
     bufferToHex(reference.receipt),
     bufferToHex(rlp.encode(reference.receiptParentNodes)),
-    bufferToHex(reference.path), // branch mask,
+    bufferToHex(
+      Buffer.concat([
+        Buffer.from('00', 'hex'),
+        reference.path
+      ])
+    ), // branch mask,
     logIndex,
   ];
 }
